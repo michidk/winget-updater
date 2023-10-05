@@ -28,7 +28,7 @@ runs:
   steps:
     - name: Detect Latest Release
       id: latest_release
-      uses: actions/github-script@v5
+      uses: actions/github-script@v6
       with:
         script: |
           const [owner, repo] = '${{ inputs.repo }}'.split('/');
