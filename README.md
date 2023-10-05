@@ -1,4 +1,4 @@
-<h1> <img src="https://github.com/michidk/winget-updater/blob/main/.github/github-actions-logo.png" width="32" height="32" alt="Logo" /> WinGet Updater (GitHub Action) </h1>
+<h1> <img src="https://rawcdn.githack.com/michidk/winget-updater/7ef56d9c40feb29e1592c0bf6c65eb1af3e77d4e/.github/images/github-actions-logo.png" width="32" height="32" alt="Logo" /> WinGet Updater (GitHub Action) </h1>
 
 [![GitHub issues][github-issues-badge]](https://github.com/michidk/winget-updater/issues)
 [![GitHub release (latest by date)][github-release-badge]](https://github.com/michidk/winget-updater/releases)
@@ -67,7 +67,7 @@ jobs:
 - `url`: The URL template to the latest release of the package. Use `{VERSION}` as a placeholder for the version number.
   - **Required**: ✅
 
-<h2> 🚀 Integrating with <a href="https://github.com/russellbanks/Komac"> <img src="https://github.com/vedantmgoyal2009/winget-releaser/blob/main/.github/komac-logo.svg" height="24px" style="vertical-align:bottom" alt="Komac logo" /> </a></h2>
+<h2> 🚀 Integrating with <a href="https://github.com/russellbanks/Komac"> <img src="https://rawcdn.githack.com/michidk/winget-updater/7ef56d9c40feb29e1592c0bf6c65eb1af3e77d4e/.github/images/komac-logo.svg" height="24px" style="vertical-align:bottom" alt="Komac logo" /> </a></h2>
 
 This GitHub action leverages [Komac][komac-repo] to generate and submit manifests to the [Windows Package Manager Community Repository][winget-pkgs-repo]. Kudos to [Russell Banks][russellbanks-github-profile] for developing Komac which powers this action.
 
