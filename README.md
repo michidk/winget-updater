@@ -24,7 +24,7 @@ The main differences are:
 
 - Give `workflow` permission to the token you created in Step 1. This will allow the action to automatically update your
   fork with the upstream repository.
-- You can use **[<img src="https://rawcdn.githack.com/michidk/winget-updater/60619302130b4c324200120af4192ca3b6cd62a7/.github/images/pull-app-logo.svg" valign="bottom"/> Pull App][pull-app-auto-update-forks]** which keeps your fork up-to-date with the upstream repository via automated pull requests.
+- You can use **[<img src="https://rawcdn.githack.com/michidk/winget-updater/5f0ac42a26dc328ef5f464240305ca5b05774866/.github/images/pull-app-logo.svg" valign="bottom"/> Pull App][pull-app-auto-update-forks]** which keeps your fork up-to-date with the upstream repository via automated pull requests.
 
 4. Add the action to your workflow file (e.g. `.github/workflows/<name>.yml`).
 
@@ -139,4 +139,5 @@ Also huge thanks to [vedantmgoyal2009][inspiration-github] for creating an aweso
 [inspiration]: https://github.com/vedantmgoyal2009/winget-releaser
 [inspiration-github]: https://github.com/vedantmgoyal2009
 [russellbanks-github]: https://github.com/russellbanks
-[gh-encrypted-secrets]: https://docs.github.com/en/actions/reference/encrypted-secrets
+[pull-app-auto-update-forks]: https://github.com/wei/pull
+[gh-encrypted-secrets]: https://docs.github.com/en/actions/security-guides/encrypted-secrets#using-encrypted-secrets-in-a-workflow
