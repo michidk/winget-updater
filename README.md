@@ -51,21 +51,24 @@ jobs:
         args: 'branch cleanup --token=${{ secrets.KOMAC_TOKEN }}'
 ```
 
-
-## ⚒️ Configuration Options for WinGet Updater Action
+## ⚒️ Configuration Options
 
 - `komac-version`: Specifies which version of Komac to use.
   - **Required**: ❌
   - **Default**: `1.11.0`
 
-- `package-id`: The package identifier of the package to update.
+- `komac-token`: The GitHub token to use for authentication.
   - **Required**: ✅
 
-- `repo`: The GitHub repository to check for the latest release of the package.
+- `package-id`: The ID of the package to update.
   - **Required**: ✅
 
-- `url`: The URL template to the latest release of the package. Use `{VERSION}` as a placeholder for the version number.
+- `repo`: The GitHub repository to check for the latest release.
   - **Required**: ✅
+
+- `url`: The URL to the latest release.
+  - **Required**: ✅
+
 
 <h2> 🚀 Integrating with <a href="https://github.com/russellbanks/Komac"> <img src="https://rawcdn.githack.com/michidk/winget-updater/7ef56d9c40feb29e1592c0bf6c65eb1af3e77d4e/.github/images/komac-logo.svg" height="24px" style="vertical-align:bottom" alt="Komac logo" /> </a></h2>
 

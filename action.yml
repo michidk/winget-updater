@@ -10,6 +10,9 @@ inputs:
     description: 'Which Komac version to use.'
     required: false
     default: '1.11.0'
+  komac-token:
+    description: 'The GitHub token to use for authentication.'
+    required: true
   package-id:
     description: 'The ID of the package to update.'
     required: true
@@ -53,4 +56,4 @@ runs:
       continue-on-error: true
       with:
         komac-version: ${{ inputs.komac-version }}
-        args: update --id ${{ inputs.package-id }} --version ${{ steps.latest_release.outputs.result }} --url $FINAL_URL --submit --token ${{ secrets.KOMAC_TOKEN }}
+        args: update --id ${{ inputs.package-id }} --version ${{ steps.latest_release.outputs.result }} --url $FINAL_URL --submit --token ${{ inputs.komac-token }}
