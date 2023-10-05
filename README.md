@@ -1,4 +1,4 @@
-<h1> <img src="https://github.com/vedantmgoyal2009/winget-releaser/blob/main/.github/github-actions-logo.png" width="32" height="32" alt="Logo" /> WinGet Updater (GitHub Action) </h1>
+<h1> <img src="https://github.com/michidk/winget-updater/blob/main/.github/github-actions-logo.png" width="32" height="32" alt="Logo" /> WinGet Updater (GitHub Action) </h1>
 
 ![GitHub issues][github-issues-badge]
 ![GitHub release (latest by date)][github-release-badge]

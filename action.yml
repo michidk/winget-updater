@@ -10,93 +10,12 @@ inputs:
     default: '1.11.0'
   override-:
     description: ''
-outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
 runs:
   using: "composite"
   steps:
-    - run: echo Hello ${{ inputs.who-to-greet }}.
-      shell: bash
-    - id: random-number-generator
-      run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
-      shell: bash
-    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-      shell: bash
-    - run: goodbye.sh
-      shell: bash
-
-
-jobs:
-  update:
-    name: Update package ${{ matrix.id }}
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        include:
-          - id: "Typst.Typst"
-            repo: "typst/typst"
-            url: "https://github.com/typst/typst/releases/download/v{VERSION}/typst-x86_64-pc-windows-msvc.zip"
-          - id: "Casey.Just"
-            repo: "casey/just"
-            url: "https://github.com/casey/just/releases/download/{VERSION}/just-{VERSION}-x86_64-pc-windows-msvc.zip"
-          - id: "michidk.vscli"
-            repo: "michidk/vscli"
-            url: "https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-x86_64-pc-windows-msvc.zip"
-
-    steps:
-    - name: Setup Java
-      uses: actions/setup-java@v2
+    - name: Run Komac
+      uses: michidk/run-komac
       with:
-        distribution: 'adopt'
-        java-version: '17'
-
-    - name: Install Komac
-      run: wget https://github.com/russellbanks/Komac/releases/download/v${{ env.KOMAC_VERSION }}/Komac-${{ env.KOMAC_VERSION }}-all.jar -O komac.jar
-
-    - name: Detect Latest Release
-      id: latest_release
-      uses: actions/github-script@v5
-      with:
-        script: |
-          const [owner, repo] = '${{ matrix.repo }}'.split('/');
-          try {
-            const { data } = await github.rest.repos.getLatestRelease({ owner, repo });
-            const tagName = data.tag_name.startsWith('v') ? data.tag_name.substring(1) : data.tag_name;
-            return tagName;
-          } catch (error) {
-            console.error(`Failed to get latest release for repo: ${owner}/${repo}`);
-            core.setFailed('Failed to get the latest release.');
-          }
-
-    - name: Compose URL
-      run: |
-        VERSION=${{ steps.latest_release.outputs.result }}
-        URL=${{ matrix.url }}
-        FINAL_URL=$(echo $URL | sed "s/{VERSION}/$VERSION/g")
-        echo "FINAL_URL=$FINAL_URL" >> $GITHUB_ENV
-        echo "Detected latest Version: ${{ steps.latest_release.outputs.result }}"
-        echo "Final URL: $FINAL_URL"
-
-    - name: Update package
-      run: java -jar komac.jar update --id ${{ matrix.id }} --version ${{ steps.latest_release.outputs.result }} --url $FINAL_URL --submit --token ${{ secrets.KOMAC_TOKEN }} || true
-
-  cleanup:
-    name: Cleanup branches
-    needs: update # Not necessarily needed as PRs don't get closed that quick but still nice to have it in order
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Setup Java
-      uses: actions/setup-java@v2
-      with:
-        distribution: 'adopt'
-        java-version: '17'
-
-    - name: Install Komac
-      run: wget https://github.com/russellbanks/Komac/releases/download/v${{ env.KOMAC_VERSION }}/Komac-${{ env.KOMAC_VERSION }}-all.jar -O komac.jar
-
-    - name: Cleanup branches
-      run: java -jar komac.jar branch cleanup --token=${{ secrets.KOMAC_TOKEN }}
+        komac-version: ${{ inputs.komac-version }}
+        args: --version
+      
