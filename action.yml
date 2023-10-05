@@ -1,0 +1,80 @@
+name: 'WinGet Updater'
+description: 'Publish updates of your application to Windows Package Manager automatically.'
+
+branding:
+  color: blue
+  icon: upload-cloud
+
+inputs:
+  komac-version:
+    description: 'Which Komac version to use.'
+    required: false
+    default: '1.11.0'
+  komac-token:
+    description: 'The GitHub token to use for authentication.'
+    required: true
+  package-id:
+    description: 'The ID of the package to update.'
+    required: true
+  repo:
+    description: 'The GitHub repository to check for the latest release.'
+    required: true
+  url:
+    description: 'The URL(s) to the latest release.'
+    required: true
+  custom-fork-owner:
+    description: 'Custom winget-pkgs fork owner'
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Check if Package Exists in winget-pkgs Repository
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const pkgid = "${{ inputs.package-id }}";
+          const url = `https://github.com/microsoft/winget-pkgs/tree/master/manifests/${pkgid.charAt(0).toLowerCase()}/${pkgid.replaceAll('.', '/')}`;
+          const headers = { method: 'HEAD' };
+
+          const res = await fetch(url, headers);
+
+          if (!res.ok) {
+            core.setFailed(`Package ${pkgid} does not exist in the winget-pkgs repository. Please add at least one version of the package before using this action.`);
+            process.exit(1);
+          }
+
+    - name: Detect Latest Release
+      id: latest_release
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const [owner, repo] = '${{ inputs.repo }}'.split('/');
+          try {
+            const { data } = await github.rest.repos.getLatestRelease({ owner, repo });
+            const tagName = data.tag_name.startsWith('v') ? data.tag_name.substring(1) : data.tag_name;
+            return tagName;
+          } catch (error) {
+            core.setFailed(`Failed to get latest release for repo: ${owner}/${repo}`);
+            process.exit(1);
+          }
+
+    - name: Compose URL
+      shell: bash
+      run: |
+        VERSION=${{ steps.latest_release.outputs.result }}
+        URL=${{ inputs.url }}
+        FINAL_URL=$(echo $URL | sed "s/{VERSION}/$VERSION/g")
+        echo "FINAL_URL=$FINAL_URL" >> $GITHUB_ENV
+        echo "Detected latest Version: ${{ steps.latest_release.outputs.result }}"
+        echo "Final URL: $FINAL_URL"
+
+    - name: Run Komac
+      uses: michidk/run-komac@v1
+      continue-on-error: true
+      with:
+        komac-version: ${{ inputs.komac-version }}
+        custom-fork-owner: ${{ inputs.custom-fork-owner }}
+        custom-tool: WinGet Updater $GITHUB_REF
+        custom-tool-url: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY
+        args: update --id ${{ inputs.package-id }} --version ${{ steps.latest_release.outputs.result }} --url $FINAL_URL --submit --token ${{ inputs.komac-token }}
