@@ -30,7 +30,7 @@ runs:
   using: "composite"
   steps:
     - name: Check if Package Exists in winget-pkgs Repository
-      uses: actions/github-script@v6
+      uses: actions/github-script@v7
       with:
         script: |
           const pkgid = "${{ inputs.package-id }}";
@@ -46,7 +46,7 @@ runs:
 
     - name: Detect Latest Release
       id: latest_release
-      uses: actions/github-script@v6
+      uses: actions/github-script@v7
       with:
         script: |
           const [owner, repo] = '${{ inputs.repo }}'.split('/');
