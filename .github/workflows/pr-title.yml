@@ -1,7 +1,13 @@
 name: Check PR title
 
-on: [pull_request_target]
-
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - edited
+      - synchronize
+      
 jobs:
   lint:
     runs-on: ubuntu-22.04
