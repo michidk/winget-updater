@@ -12,7 +12,6 @@ The main differences are:
 
 - This action will update your package to the latest release available on GitHub automatically. It does not need to react to an `on: release` event in GitHub actions.
 - It is a composite action, which consists of other GitHub actions, which makes it very simple (no big Typescript project).
-- It does not depend on external non-GitHub APIs.
 
 ## Getting Started 🚀
 
@@ -126,7 +125,7 @@ For a real-world example, have a look at my WinGet package updater repository: [
 <h2> 🚀 Integrating with <a href="https://github.com/russellbanks/Komac"> <img src="https://rawcdn.githack.com/michidk/winget-updater/7ef56d9c40feb29e1592c0bf6c65eb1af3e77d4e/.github/images/komac-logo.svg" height="24px" style="vertical-align:bottom" alt="Komac logo" /> </a></h2>
 
 This GitHub action leverages [Komac][komac-repo] to generate and submit manifests to the [Windows Package Manager Community Repository][winget-pkgs-repo]. Kudos to [Russell Banks][russellbanks-github] for developing Komac which powers this action.
-Also huge thanks to [vedantmgoyal2009][inspiration-github] for creating an awesome GitHub actions, which this one is heavily inspired from.
+Also huge thanks to [vedantmgoyal2009][inspiration-github] for creating an awesome GitHub action, which this one is heavily inspired from.
 
 [github-issues-badge]: https://img.shields.io/github/issues/michidk/winget-updater?logo=target
 [github-release-badge]: https://img.shields.io/github/v/release/michidk/winget-updater?logo=github
