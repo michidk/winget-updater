@@ -1,8 +1,6 @@
 <h1> <img src="https://rawcdn.githack.com/michidk/winget-updater/7ef56d9c40feb29e1592c0bf6c65eb1af3e77d4e/.github/images/github-actions-logo.png" width="32" height="32" alt="Logo" /> WinGet Updater (GitHub Action) </h1>
 
-[![GitHub issues][github-issues-badge]](https://github.com/michidk/winget-updater/issues)
 [![GitHub release (latest by date)][github-release-badge]](https://github.com/michidk/winget-updater/releases)
-[![GitHub Repo stars][github-repo-stars-badge]](https://github.com/michidk/winget-updater/stargazers)
 [![GitHub][github-license-badge]](https://github.com/michidk/winget-updater?tab=MIT-1-ov-file#readme)
 
 A GitHub action which automatically updates WinGet packages, based on Komac.
@@ -115,7 +113,7 @@ For a real-world example, have a look at my WinGet package updater repository: [
 - `repo`: The GitHub repository to check for the latest release.
   - **Required**: ✅
   - **Example**: `michidk/vscli`
-- `url`: The URL(s) to the latest release. Can also be a comma separated list. Use the placeholder `{VERSION}` to specify where the version should be inserted. The placeholder contains the version without `v`, e.g. `1.2.3`.
+- `url`: The URL(s) to the latest release. Can also be a comma-separated list. Use the placeholder `{VERSION}` to specify where the version should be inserted. The placeholder contains the version without `v`, e.g. `1.2.3`.
   - **Required**: ✅
   - **Example**: `https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-x86_64-pc-windows-msvc.zip`
 - `custom-fork-owner`: The owner of the `winget-pkgs` repo fork to use. If not specified, the owner of the repository where the action is used will be used.
@@ -130,7 +128,7 @@ Also huge thanks to [vedantmgoyal2009][inspiration-github] for creating an aweso
 [github-issues-badge]: https://img.shields.io/github/issues/michidk/winget-updater?logo=target
 [github-release-badge]: https://img.shields.io/github/v/release/michidk/winget-updater?logo=github
 [github-repo-stars-badge]: https://img.shields.io/github/stars/michidk/winget-updater?logo=githubsponsors
-[github-license-badge]: https://img.shields.io/github/license/michidk/winget-updater?logo=gnu
+[github-license-badge]: https://img.shields.io/github/license/michidk/winget-updater
 [winget-pkgs-repo]: https://github.com/microsoft/winget-pkgs
 [komac-repo]: https://github.com/russellbanks/komac
 [run-komac-action]: https://github.com/michidk/run-komac
