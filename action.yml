@@ -70,7 +70,7 @@ runs:
         echo "Final URL: $FINAL_URL"
 
     - name: Run Komac
-      uses: michidk/run-komac@v1
+      uses: michidk/run-komac@v2
       continue-on-error: true
       with:
         komac-version: ${{ inputs.komac-version }}
