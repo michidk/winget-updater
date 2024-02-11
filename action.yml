@@ -13,8 +13,8 @@ inputs:
   komac-token:
     description: 'The GitHub token to use for authentication.'
     required: true
-  package-id:
-    description: 'The ID of the package to update.'
+  identifier:
+    description: 'The PackageIdentifier of the package (case-sensitive).'
     required: true
   repo:
     description: 'The GitHub repository to check for the latest release.'
@@ -33,7 +33,7 @@ runs:
       uses: actions/github-script@v7
       with:
         script: |
-          const pkgid = "${{ inputs.package-id }}";
+          const pkgid = "${{ inputs.identifier }}";
           const url = `https://github.com/microsoft/winget-pkgs/tree/master/manifests/${pkgid.charAt(0).toLowerCase()}/${pkgid.replaceAll('.', '/')}`;
           const headers = { method: 'HEAD' };
 
@@ -77,4 +77,4 @@ runs:
         custom-fork-owner: ${{ inputs.custom-fork-owner }}
         custom-tool: WinGet Updater $GITHUB_REF
         custom-tool-url: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY
-        args: update --id ${{ inputs.package-id }} --version ${{ steps.latest_release.outputs.result }} --url $FINAL_URL --submit --token ${{ inputs.komac-token }}
+        args: update --identifier ${{ inputs.identifier }} --version ${{ steps.latest_release.outputs.result }} --url $FINAL_URL --submit --token ${{ inputs.komac-token }}
