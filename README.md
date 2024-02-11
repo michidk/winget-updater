@@ -105,7 +105,7 @@ For a real-world example, have a look at my WinGet package updater repository: [
 - `komac-version`: Specifies which version of Komac to use.
   - **Required**: ❌
   - **Default**: `latest`
-- `komac-token`: The GitHub token to use for authentication. The token should have a `public_repo` and `read_org` scope ⚠️.
+- `komac-token`: The GitHub token to use for authentication. The token should have the `public_repo` scope.
   - **Required**: ✅
   - ⚠ **WARNING**: Do **not** directly put the token in the action. Instead, create a repository secret containing the token and use that in the workflow. Refer to [using encrypted secrets in a workflow](https://docs.github.com/en/actions/security-guides/encrypted-secrets#using-encrypted-secrets-in-a-workflow) for more information.
 - `identifier`: The package identifier of the package to be updated in the [WinGet Community Repository](https://github.com/microsoft/winget-pkgs).
