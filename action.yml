@@ -77,4 +77,4 @@ runs:
         custom-fork-owner: ${{ inputs.custom-fork-owner }}
         custom-tool: WinGet Updater $GITHUB_REF
         custom-tool-url: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY
-        args: update --identifier ${{ inputs.identifier }} --version ${{ steps.latest_release.outputs.result }} --url $FINAL_URL --submit --token ${{ inputs.komac-token }}
+        args: update --identifier ${{ inputs.identifier }} --version ${{ steps.latest_release.outputs.result }} --urls $FINAL_URL --submit --token ${{ inputs.komac-token }}
