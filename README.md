@@ -1,7 +1,7 @@
 <h1> <img src="https://rawcdn.githack.com/michidk/winget-updater/7ef56d9c40feb29e1592c0bf6c65eb1af3e77d4e/.github/images/github-actions-logo.png" width="32" height="32" alt="Logo" /> WinGet Updater (GitHub Action) </h1>
 
-[![GitHub release (latest by date)][github-release-badge]](https://github.com/michidk/winget-updater/releases)
-[![GitHub][github-license-badge]](https://github.com/michidk/winget-updater?tab=MIT-1-ov-file#readme)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/michidk/winget-updater?logo=github)](https://github.com/michidk/winget-updater/releases)
+[![GitHub](https://img.shields.io/github/license/michidk/winget-updater)](https://github.com/michidk/winget-updater?tab=MIT-1-ov-file#readme)
 
 A GitHub action which automatically updates WinGet packages, based on Komac.
 
