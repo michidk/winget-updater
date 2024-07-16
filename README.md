@@ -49,9 +49,10 @@ jobs:
     - name: Update Packages
       uses: michidk/winget-updater@v1
       with:
-        package-id: michidk.vscli
-        repo: michidk.vscli
-        url: https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-x86_64-pc-windows-msvc.zip
+        komac-token: ${{ secrets.KOMAC_TOKEN }}
+        identifier: "michidk.vscli"
+        repo: "michidk.vscli"
+        URL: "https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-x86_64-pc-windows-msvc.zip"
 ```
 
 Use a matrix to update multiple packages at once. Can also be combined with [Run Komac](https://github.com/michidk/run-komac) to automatically clean up branches after a PR has been merged:
@@ -67,35 +68,37 @@ on:
 jobs:
   update:
     name: Update package ${{ matrix.id }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     strategy:
       matrix:
         include:
-          - id: "michidk.vscli"
-            repo: "michidk/vscli"
-            url: "https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-x86_64-pc-windows-msvc.zip"
           - id: "Casey.Just"
             repo: "casey/just"
             url: "https://github.com/casey/just/releases/download/{VERSION}/just-{VERSION}-x86_64-pc-windows-msvc.zip"
+          - id: "michidk.vscli"
+            repo: "michidk/vscli"
+            url: "https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-x86_64-pc-windows-msvc.zip"
+
     steps:
     - name: Update Packages
-      uses: michidk/winget-updater@v1
+      uses: michidk/winget-updater@latest
       with:
-        package-id: ${{ matrix.id }}
+        komac-token: ${{ secrets.KOMAC_TOKEN }}
+        identifier: ${{ matrix.id }}
         repo: ${{ matrix.repo }}
         url: ${{ matrix.url }}
 
   cleanup:
     name: Cleanup branches
     needs: update # Not necessarily needed as PRs don't get closed that quick but still nice to have it in order
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
     - name: Run Komac
-      uses: michidk/run-komac@v2
+      uses: michidk/run-komac@latest
       with:
-        args: 'branch cleanup --token=${{ secrets.KOMAC_TOKEN }}'
+        args: 'cleanup --only-merged --token=${{ secrets.KOMAC_TOKEN }}'
 ```
 
 For a real-world example, have a look at my WinGet package updater repository: [michidk/winget](https://github.com/michidk/winget)
