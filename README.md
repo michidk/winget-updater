@@ -82,7 +82,7 @@ jobs:
             # Multi URL package entry
           - id: "michidk.vscli"
             repo: "michidk/vscli"
-            url: "'https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-x86_64-pc-windows-msvc.zip https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-i686-pc-windows-msvc.zip'"
+            url: '"https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-x86_64-pc-windows-msvc.zip https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-i686-pc-windows-msvc.zip"'
 
     steps:
     - name: Update Packages
@@ -121,10 +121,10 @@ For a real-world example, have a look at my WinGet package updater repository: [
 - `repo`: The GitHub repository to check for the latest release.
   - **Required**: ✅
   - **Example**: `michidk/vscli`
-- `url`: The URL(s) to the latest release. Can also be a comma-separated list. Use the placeholder `{VERSION}` to specify where the version should be inserted. The placeholder contains the version without `v`, e.g. `1.2.3`. If multiple URL's are specified, they must be wrapped in either `'` or `"`. See the second example.
+- `url`: The URL(s) to the latest release. Use the placeholder `{VERSION}` to specify where the version should be inserted. The placeholder contains the version without `v`, e.g. `1.2.3`. Multiple URLs may be specified by wrapping a space-separated string in single and double quotes as in the second example below.
   - **Required**: ✅
   - **Example 1**: `https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-x86_64-pc-windows-msvc.zip`
-  - **Example 2**: `url: "'https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-x86_64-pc-windows-msvc.zip https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-i686-pc-windows-msvc.zip'"`
+  - **Example 2**: `url: '"https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-x86_64-pc-windows-msvc.zip https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-i686-pc-windows-msvc.zip"'`
 - `custom-fork-owner`: The owner of the `winget-pkgs` repo fork to use. If not specified, the owner of the repository where the action is used will be used.
   - **Required**: ❌
   - **Example**: `michidk`
