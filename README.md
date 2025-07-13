@@ -125,6 +125,9 @@ For a real-world example, have a look at my WinGet package updater repository: [
   - **Required**: ✅
   - **Example 1**: `https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-x86_64-pc-windows-msvc.zip`
   - **Example 2**: `url: '"https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-x86_64-pc-windows-msvc.zip https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-i686-pc-windows-msvc.zip"'`
+- `version`: Manually specify the version. This is useful for cases where the latest release's tag doesn't follow the `vX.X.X` or `x.x.x` patterns.
+  - **Required**: ❌
+  - **Example**: `1.0.0`
 - `custom-fork-owner`: The owner of the `winget-pkgs` repo fork to use. If not specified, the owner of the repository where the action is used will be used.
   - **Required**: ❌
   - **Example**: `michidk`
