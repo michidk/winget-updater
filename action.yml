@@ -22,6 +22,9 @@ inputs:
   url:
     description: 'The URL(s) to the latest release.'
     required: true
+  version:
+    description: 'Override the auto-detected version.'
+    required: false
   custom-fork-owner:
     description: 'Custom winget-pkgs fork owner'
     required: false
@@ -62,12 +65,13 @@ runs:
     - name: Compose URL
       shell: bash
       run: |
-        VERSION=${{ steps.latest_release.outputs.result }}
+        VERSION=${{ inputs.version || steps.latest_release.outputs.result }}
         URL=${{ inputs.url }}
         FINAL_URL=$(echo $URL | sed "s/{VERSION}/$VERSION/g")
         echo "FINAL_URL=$FINAL_URL" >> $GITHUB_ENV
-        echo "Detected latest Version: ${{ steps.latest_release.outputs.result }}"
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
         echo "Final URL: $FINAL_URL"
+        echo "Version: $VERSION"
 
     - name: Run Komac
       uses: michidk/run-komac@v2
@@ -77,4 +81,4 @@ runs:
         custom-fork-owner: ${{ inputs.custom-fork-owner }}
         custom-tool: WinGet Updater
         custom-tool-url: "https://github.com/michidk/winget-updater"
-        args: update ${{ inputs.identifier }} --version ${{ steps.latest_release.outputs.result }} --urls $FINAL_URL --submit --token ${{ inputs.komac-token }}
+        args: update ${{ inputs.identifier }} --version $VERSION --urls $FINAL_URL --submit --token ${{ inputs.komac-token }}
