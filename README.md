@@ -52,7 +52,7 @@ jobs:
         komac-token: ${{ secrets.KOMAC_TOKEN }}
         identifier: "michidk.vscli"
         repo: "michidk/vscli"
-        URL: "https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-x86_64-pc-windows-msvc.zip"
+        url: "https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-x86_64-pc-windows-msvc.zip"
 ```
 
 Use a matrix to update multiple packages at once. Can also be combined with [Run Komac](https://github.com/michidk/run-komac) to automatically clean up branches after a PR has been merged:
