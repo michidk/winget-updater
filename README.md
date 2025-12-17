@@ -51,7 +51,7 @@ jobs:
       with:
         komac-token: ${{ secrets.KOMAC_TOKEN }}
         identifier: "michidk.vscli"
-        repo: "michidk.vscli"
+        repo: "michidk/vscli"
         URL: "https://github.com/michidk/vscli/releases/download/v{VERSION}/vscli-x86_64-pc-windows-msvc.zip"
 ```
 
