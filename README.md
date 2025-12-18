@@ -128,7 +128,7 @@ For a real-world example, have a look at my WinGet package updater repository: [
 - `version`: Manually specify the version. This is useful for cases where the latest release's tag doesn't follow the `vX.X.X` or `x.x.x` patterns.
   - **Required**: ❌
   - **Example**: `1.0.0`
-- `custom-fork-owner`: The owner of the `winget-pkgs` repo fork to use. If not specified, the owner of the repository where the action is used will be used.
+- `custom-fork-owner`: The owner of the `winget-pkgs` repo fork to use. If not specified, the user that created the `komac-token`.
   - **Required**: ❌
   - **Example**: `michidk`
 
