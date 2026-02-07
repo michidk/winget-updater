@@ -5,7 +5,7 @@
 
 A GitHub action which automatically updates WinGet packages, based on Komac.
 
-This project is heavily inspired by [vedantmgoyal2009/winget-releaser](https://github.com/vedantmgoyal2009/winget-releaser).
+This project is heavily inspired by [vedantmgoyal9/winget-releaser](https://github.com/vedantmgoyal9/winget-releaser).
 The main differences are:
 
 - This action will update your package to the latest release available on GitHub automatically. It does not need to react to an `on: release` event in GitHub actions.
