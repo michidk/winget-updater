@@ -111,7 +111,7 @@ For a real-world example, have a look at my WinGet package updater repository: [
 
 - `komac-version`: Specifies which version of Komac to use.
   - **Required**: ❌
-  - **Default**: `2.6.0`
+  - **Default**: `2.15.0`
 - `komac-token`: The GitHub token to use for authentication. The token should have the `public_repo` scope.
   - **Required**: ✅
   - ⚠ **WARNING**: Do **not** directly put the token in the action. Instead, create a repository secret containing the token and use that in the workflow. Refer to [using encrypted secrets in a workflow](https://docs.github.com/en/actions/security-guides/encrypted-secrets#using-encrypted-secrets-in-a-workflow) for more information.

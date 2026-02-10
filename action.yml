@@ -9,7 +9,7 @@ inputs:
   komac-version:
     description: 'Which Komac version to use.'
     required: false
-    default: '2.6.0'
+    default: '2.15.0'
   komac-token:
     description: 'The GitHub token to use for authentication.'
     required: true
