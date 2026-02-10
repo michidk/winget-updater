@@ -131,6 +131,8 @@ For a real-world example, have a look at my WinGet package updater repository: [
 - `custom-fork-owner`: The owner of the `winget-pkgs` repo fork to use. If not specified, the user that created the `komac-token`.
   - **Required**: ❌
   - **Example**: `michidk`
+- `ghes-token`: Token for GHES authentification.
+  - **Required**: ❌
 
 <h2> 🚀 Integrating with <a href="https://github.com/russellbanks/Komac"> <img src="https://rawcdn.githack.com/michidk/winget-updater/7ef56d9c40feb29e1592c0bf6c65eb1af3e77d4e/.github/images/komac-logo.svg" height="24px" style="vertical-align:bottom" alt="Komac logo" /> </a></h2>
 
