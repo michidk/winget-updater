@@ -5,7 +5,7 @@
 
 A GitHub action which automatically updates WinGet packages, based on Komac.
 
-This project is heavily inspired by [vedantmgoyal2009/winget-releaser](https://github.com/vedantmgoyal2009/winget-releaser).
+This project is heavily inspired by [vedantmgoyal9/winget-releaser](https://github.com/vedantmgoyal9/winget-releaser).
 The main differences are:
 
 - This action will update your package to the latest release available on GitHub automatically. It does not need to react to an `on: release` event in GitHub actions.
@@ -15,10 +15,10 @@ The main differences are:
 
 1. At least **one** version of your package should already be present in the [Windows Package Manager Community Repository](https://github.com/microsoft/winget-pkgs). The action will use that version as a base to create manifests for new versions of the package.
 
-2. You will need to create a _classic_ Personal Access Token (PAT) with `public_repo` scope. _New_ fine-grained PATs aren't supported by the action. Review [this issue](https://github.com/vedantmgoyal2009/winget-releaser/issues/172) for information.
+2. You will need to create a _classic_ Personal Access Token (PAT) with `public_repo` scope. _New_ fine-grained PATs aren't supported by the action. Review [this issue](https://github.com/vedantmgoyal9/winget-releaser/issues/172) for information.
 
-3. Fork the [winget-pkgs](https://github.com/microsoft/winget-pkgs) repository under the same account/organization as your repository on which you want to use this action. Ensure that the fork is up-to-date with the upstream repository (see [this issue](https://github.com/vedantmgoyal2009/winget-releaser/issues/32) for why this is important). You can do this using one of the following methods:
-https://github.com/vedantmgoyal2009/winget-releaser
+3. Fork the [winget-pkgs](https://github.com/microsoft/winget-pkgs) repository under the same account/organization as your repository on which you want to use this action. Ensure that the fork is up-to-date with the upstream repository (see [this issue](https://github.com/vedantmgoyal9/winget-releaser/issues/32) for why this is important). You can do this using one of the following methods:
+https://github.com/vedantmgoyal9/winget-releaser
 - Give `workflow` permission to the token you created in Step 1. This will allow the action to automatically update your
   fork with the upstream repository.
 - You can use **[Pull App](https://github.com/wei/pull)** which keeps your fork up-to-date with the upstream repository via automated pull requests.
@@ -137,4 +137,4 @@ For a real-world example, have a look at my WinGet package updater repository: [
 <h2> 🚀 Integrating with <a href="https://github.com/russellbanks/Komac"> <img src="https://rawcdn.githack.com/michidk/winget-updater/7ef56d9c40feb29e1592c0bf6c65eb1af3e77d4e/.github/images/komac-logo.svg" height="24px" style="vertical-align:bottom" alt="Komac logo" /> </a></h2>
 
 This GitHub action leverages [Komac](https://github.com/russellbanks/komac) to generate and submit manifests to the [Windows Package Manager Community Repository](https://github.com/microsoft/winget-pkgs). Kudos to [Russell Banks](https://github.com/russellbanks) for developing Komac which powers this action.
-Also huge thanks to [vedantmgoyal2009](https://github.com/vedantmgoyal2009) for creating an awesome GitHub action, which this one is heavily inspired from.
+Also huge thanks to [vedantmgoyal9](https://github.com/vedantmgoyal9) for creating an awesome GitHub action, which this one is heavily inspired from.
